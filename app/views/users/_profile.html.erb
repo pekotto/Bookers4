@@ -10,8 +10,18 @@
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+		<tr>
+			<th>follows</th>
+			<th><%= link_to "#{user.followings.count}", following_user_path(user) %></th>
+		</tr>
+		<tr>
+			<th>folowers</th>
+			<th><%= link_to "#{user.followers.count}", followers_user_path(user) %></th>
+		</tr>
 </table>
 
 <div class="row">
-	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+      <% if user == current_user %>
+     <%= link_to '',edit_user_path(current_user.id),class: "btn btn-block btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
+     <% end %>
 </div>
